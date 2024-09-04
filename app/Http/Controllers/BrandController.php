@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -35,7 +36,7 @@ class BrandController extends Controller
 	public function store(StoreBrandRequest $request)
 	{
 		$image = $request->file('image');
-		$image_urn = $image->storeAs('images', $image->getClientOriginalName(), 'public');
+		$image_urn = $image->store('images', 'public');
 
 		$brand = $this->brand->create([
 			'name' => $request->name,
@@ -68,8 +69,11 @@ class BrandController extends Controller
 		if (!$brand) {
 			return response()->json(['msg' => 'Brand not found'], 404);
 		}
+		if ($request->file('image')) {
+			Storage::disk('public')->delete($brand->image);
+		}
 		$image = $request->file('image');
-		$image_urn = $image->storeAs('images', $image->getClientOriginalName(), 'public');
+		$image_urn = $image->store('images', 'public');
 
 		$brand->update([
 			'name' => $request->name,
@@ -84,9 +88,12 @@ class BrandController extends Controller
 	public function destroy($id)
 	{
 		$brand = $this->brand->find($id);
+
 		if (!$brand) {
 			return response()->json(['msg' => 'Brand not found'], 404);
 		}
+		
+		Storage::disk('public')->delete($brand->image);
 		$brand->delete();
 		return response()->json(['msg' => 'Brand deleted'], 200);
 	}

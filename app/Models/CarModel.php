@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarModel extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $fillable = [
+    'brand_id',
+    'name',
+    'image',
+    'doors_number',
+    'seats',
+    'air_bag',
+    'abs'
+  ];
 }
