@@ -23,7 +23,7 @@ class StoreBrandRequest extends FormRequest
     {
         return [
             'name' => ['required', 'unique:brands', 'min:3'],
-            'image' => ['required'],
+            'image' => ['required', 'file', 'mimes:png', 'max:2048'],	// 2MB
         ];
     }
 
@@ -39,6 +39,9 @@ class StoreBrandRequest extends FormRequest
             'name.unique' => 'Name must be unique',
             'name.min' => 'Name must have at least 3 characters',
             'image.required' => 'Image is required',
+            'image.file' => 'Image must be a file',
+            'image.mimes' => 'Image must be a png file',
+            'image.max' => 'Image must be less than 2MB',
         ];
     }
 }

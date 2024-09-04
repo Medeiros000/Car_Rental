@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
-use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+
 	protected $brand;
 
 	/**
@@ -34,8 +34,13 @@ class BrandController extends Controller
 	 */
 	public function store(StoreBrandRequest $request)
 	{
-		$request->validated($this->brand->rules(), $this->brand->messages());
-		$brand = $this->brand->create($request->all());
+		$image = $request->file('image');
+		$image_urn = $image->storeAs('images', $image->getClientOriginalName(), 'public');
+
+		$brand = $this->brand->create([
+			'name' => $request->name,
+			'image' => $image_urn,
+		]);
 		return response()->json($brand, 201);
 	}
 
@@ -63,7 +68,13 @@ class BrandController extends Controller
 		if (!$brand) {
 			return response()->json(['msg' => 'Brand not found'], 404);
 		}
-		$brand->update($request->all());
+		$image = $request->file('image');
+		$image_urn = $image->storeAs('images', $image->getClientOriginalName(), 'public');
+
+		$brand->update([
+			'name' => $request->name,
+			'image' => $image_urn,
+		]);
 		return response()->json($brand, 200);
 	}
 
