@@ -34,7 +34,6 @@ class CarController extends Controller
 	 */
 	public function store(StoreCarRequest $request)
 	{
-		$request->validated($this->car->rules(), $this->car->messages());
 		$car = $this->car->create($request->all());
 		return response()->json($car->all(), 201);
 	}

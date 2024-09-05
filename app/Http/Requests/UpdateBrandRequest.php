@@ -26,7 +26,6 @@ class UpdateBrandRequest extends FormRequest
         } elseif ($this->isMethod('patch')) {
             return $this->patchRules();
         }
-
         return [];
     }
 
