@@ -12,4 +12,13 @@ class Brand extends Model
     'name',
     'image'
   ];
+
+  /**
+   * Summary of models
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function car_models()
+  {
+    return $this->hasMany(CarModel::class);
+  }
 }

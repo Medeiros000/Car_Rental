@@ -18,4 +18,13 @@ class CarModel extends Model
     'air_bag',
     'abs'
   ];
+
+  /**
+   * Summary of brand
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function brand()
+  {
+    return $this->belongsTo(Brand::class);
+  }
 }

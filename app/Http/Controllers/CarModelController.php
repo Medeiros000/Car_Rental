@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositories\CarModelRepository;
 use App\Models\CarModel;
 use App\Http\Requests\StoreCarModelRequest;
 use App\Http\Requests\UpdateCarModelRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CarModelController extends Controller
@@ -23,14 +25,34 @@ class CarModelController extends Controller
 
 	/**
 	 * Display a listing of the resource.
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		return response()->json($this->carModel->all());
+		$car_model_repository = new CarModelRepository($this->carModel);
+
+		if ($request->has('brand_attributes')) {
+			$car_model_attributes = 'brand:id,'. $request->get('brand_attributes');
+			$car_model_repository->selectAttributesRelationship($car_model_attributes);
+		} else {
+			$car_model_repository->selectAttributesRelationship('brand');
+		}
+
+		if ($request->has('filter')) {
+			$car_model_repository->filter($request->get('filter'));
+		}
+
+		if ($request->has('attributes')) {
+			$car_model_repository->selectAttributes($request->get('attributes'));
+		}
+
+		return response()->json($car_model_repository->getResults(), 200);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
+	 * @param StoreCarModelRequest $request
+	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function store(StoreCarModelRequest $request)
 	{
@@ -61,7 +83,7 @@ class CarModelController extends Controller
 		if (!$carModel) {
 			return response()->json(['error' => 'Car model not found'], 404);
 		}
-		return response()->json($carModel);
+		return response()->json($carModel, 200);
 	}
 
 	/**
@@ -91,11 +113,13 @@ class CarModelController extends Controller
 			'air_bag' => $request->air_bag,
 			'abs' => $request->abs
 		]);
-		return response()->json($carModel);
+		return response()->json($carModel, 200);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
+	 * @param int $id
+	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function destroy($id)
 	{

@@ -5,12 +5,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\CarModelController;
 use App\Http\Controllers\CostumerController;
 use App\Http\Controllers\RentalController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-// Route::get('/user', function (Request $request) {
-// 	return $request->user();
-// })->middleware('auth:sanctum');
 
 Route::apiResources([
 	'brands' => BrandController::class,

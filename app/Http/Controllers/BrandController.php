@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Repositories\BrandRepository;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
@@ -23,15 +25,34 @@ class BrandController extends Controller
 
 	/**
 	 * Display a listing of the resource.
+	 * @return \Illuminate\Http\JsonResponse
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$brands = $this->brand->all();
-		return response()->json($brands, 200);
+		$brandRepository = new BrandRepository($this->brand);
+
+		if ($request->has('car_model_attributes')) {
+			$car_model_attributes = 'car_models:id,' . $request->get('car_model_attributes');
+			$brandRepository->selectAttributesRelationship($car_model_attributes);
+		} else {
+			$brandRepository->selectAttributesRelationship('car_models');
+		}
+
+		if ($request->has('filter')) {
+			$brandRepository->filter($request->get('filter'));
+		}
+
+		if ($request->has('attributes')) {
+			$brandRepository->selectAttributes($request->get('attributes'));
+		}
+
+		return response()->json($brandRepository->getResults(), 200);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
+	 * @param StoreBrandRequest $request
+	 * @return \Illuminate\Http\JsonResponse
 	 */
 	public function store(StoreBrandRequest $request)
 	{
@@ -92,7 +113,7 @@ class BrandController extends Controller
 		if (!$brand) {
 			return response()->json(['msg' => 'Brand not found'], 404);
 		}
-		
+
 		Storage::disk('public')->delete($brand->image);
 		$brand->delete();
 		return response()->json(['msg' => 'Brand deleted'], 200);
