@@ -17,6 +17,7 @@ class BrandController extends Controller
 	/**
 	 * BrandController constructor.
 	 * @param Brand $brand
+	 * @return void
 	 */
 	public function __construct(Brand $brand)
 	{
@@ -75,10 +76,11 @@ class BrandController extends Controller
 	public function show($id)
 	{
 		$brand = $this->brand->find($id);
-		if (!$brand) {
+		if ($brand) {
+			return response()->json($brand, 200);
+		} else {
 			return response()->json(['msg' => 'Brand not found'], 404);
 		}
-		return $brand;
 	}
 
 	/**

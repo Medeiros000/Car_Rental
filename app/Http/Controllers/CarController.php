@@ -34,7 +34,7 @@ class CarController extends Controller
 	 */
 	public function store(StoreCarRequest $request)
 	{
-		$car = $this->car->create($request->all());
+		$car = $this->car->create($request->validated());
 		return response()->json($car->all(), 201);
 	}
 
@@ -47,10 +47,11 @@ class CarController extends Controller
 	public function show($id)
 	{
 		$car = $this->car->find($id);
-		if (!$car) {
+		if ($car) {
+			return response()->json($car, 200);
+		} else {
 			return response()->json(['msg' => 'Car not found'], 404);
 		}
-		return $car;
 	}
 
 	/**
@@ -59,12 +60,12 @@ class CarController extends Controller
 	public function update(UpdateCarRequest $request, $id)
 	{
 		$car = $this->car->find($id);
-		if (!$car) {
+		if ($car) {
+			$car->update($request->validated());
+			return response()->json($car, 200);
+		} else {
 			return response()->json(['msg' => 'Car not found'], 404);
 		}
-		$request->validated($this->car->rules(), $this->car->messages());
-		$car->update($request->all());
-		return response()->json($car, 200);
 	}
 
 	/**
@@ -73,10 +74,11 @@ class CarController extends Controller
 	public function destroy($id)
 	{
 		$car = $this->car->find($id);
-		if (!$car) {
+		if ($car) {
+			$car->delete($car);
+			return response()->json($car, 200);
+		} else {
 			return response()->json(['msg' => 'Car not found'], 404);
 		}
-		$car->delete();
-		return response()->json(['msg' => 'Car deleted'], 200);
 	}
 }
