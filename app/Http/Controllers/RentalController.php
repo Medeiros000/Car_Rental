@@ -45,7 +45,8 @@ class RentalController extends Controller
    */
   public function store(StoreRentalRequest $request)
   {
-    //
+    $rental = $this->rental->create($request->validated());
+    return response()->json($rental, 201);
   }
 
   /**
