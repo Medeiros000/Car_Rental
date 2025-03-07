@@ -25,7 +25,7 @@ class CarController extends Controller
 	 */
 	public function index()
 	{
-		$car = $this->car->all();
+		$car = $this->car->with('carModel')->get();
 		return response()->json($car, 200);
 	}
 
@@ -46,7 +46,7 @@ class CarController extends Controller
 	 */
 	public function show($id)
 	{
-		$car = $this->car->find($id);
+		$car = $this->car->with('carModel')->find($id);
 		if ($car) {
 			return response()->json($car, 200);
 		} else {

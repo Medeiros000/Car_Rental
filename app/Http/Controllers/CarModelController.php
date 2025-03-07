@@ -57,7 +57,7 @@ class CarModelController extends Controller
 	public function store(StoreCarModelRequest $request)
 	{
 		$image = $request->file('image');
-		$image_urn = $image->store('images/modelos', 'public');
+		$image_urn = $image->store('images/car_model', 'public');
 
 		$carModel = $this->carModel->create([
 			'brand_id' => $request->brand_id,
@@ -102,7 +102,7 @@ class CarModelController extends Controller
 			Storage::disk('public')->delete($carModel->image);
 		}
 		$image = $request->file('image');
-		$image_urn = $image->store('images/modelos', 'public');
+		$image_urn = $image->store('images/car_model', 'public');
 
 		$carModel->update([
 			'brand_id' => $request->brand_id,

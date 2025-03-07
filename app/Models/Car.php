@@ -15,4 +15,9 @@ class Car extends Model
         'available', 
         'km'
     ];
+
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class);
+    }
 }

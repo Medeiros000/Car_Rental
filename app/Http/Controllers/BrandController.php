@@ -58,7 +58,7 @@ class BrandController extends Controller
 	public function store(StoreBrandRequest $request)
 	{
 		$image = $request->file('image');
-		$image_urn = $image->store('images', 'public');
+		$image_urn = $image->store('images/brand', 'public');
 
 		$brand = $this->brand->create([
 			'name' => $request->name,
@@ -96,7 +96,7 @@ class BrandController extends Controller
 			Storage::disk('public')->delete($brand->image);
 		}
 		$image = $request->file('image');
-		$image_urn = $image->store('images', 'public');
+		$image_urn = $image->store('images/brand', 'public');
 
 		$brand->update([
 			'name' => $request->name,
