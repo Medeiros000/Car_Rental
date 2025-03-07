@@ -3,7 +3,7 @@
 @foreach ($route_list_values as $indice => $routes)
   <div id="{{ $indice }}" class="invisible"></div>
   @foreach ($routes as $route)
-    <section id="{{ $indice . $route['id'] }}" class="anchor mt-5 bg-slate-200 rounded-lg p-4 w-fullt">
+    <section id="{{ $indice . $route['id'] }}" class="anchor mt-5 bg-slate-200 rounded-lg p-4">
       <div class="py-5">
         <h2 class="text-2xl font-bold pb-4"># {{ $route['name'] }}</h2>
         <p><strong>Endpoint:</strong> {{ $route['endpoint'] }}</p>
@@ -19,8 +19,18 @@
         <div class="mt-4">
           <p><strong>Exemplo de Requisição:</strong></p>
           <div class="overflow-x-auto bg-slate-900 text-slate-200 rounded-lg px-1 border border-slate-200 ">
-            <pre><code>{{ $route['request'] }}
-            </code></pre>
+            @php
+              $jsonString = $route['request'];
+              $data = json_decode($jsonString);
+              if (json_last_error() !== JSON_ERROR_NONE) {
+                  echo 'Erro na decodificação JSON: ' . json_last_error_msg();
+              } else {
+                  $prettyJson = json_encode($data, JSON_PRETTY_PRINT);
+                  echo '<pre><br>';
+                  echo str_replace('\\', '', $prettyJson);
+                  echo '</pre><br>';
+              }
+            @endphp
           </div>
         </div>
       @endif
@@ -28,8 +38,18 @@
         <div class="mt-4">
           <p><strong>Exemplo de Resposta:</strong></p>
           <div class="overflow-x-auto bg-slate-900 text-slate-200 rounded-lg px-1 border border-slate-200 ">
-            <pre><code>{{ $route['response'] }}
-            </code></pre>
+            @php
+              $jsonString = $route['response'];
+              $data = json_decode($jsonString);
+              if (json_last_error() !== JSON_ERROR_NONE) {
+                  echo 'Erro na decodificação JSON: ' . json_last_error_msg();
+              } else {
+                  $prettyJson = json_encode($data, JSON_PRETTY_PRINT);
+                  echo '<pre><br>';
+                  echo str_replace('\\', '', $prettyJson);
+                  echo '</pre><br>';
+              }
+            @endphp
           </div>
         </div>
       @endif

@@ -5,7 +5,7 @@
 
 @section('content')
   @php
-    $rotas = ['brands', 'categories', 'cars', 'clients', 'rents', 'users'];
+    $rotas = ['brands', 'car_models', 'cars', 'costumers', 'rents'];
     $methods = ['listar', 'criar', 'exibir', 'atualizar', 'deletar'];
     $route_list_values = include resource_path('data/brands.php');
   @endphp
