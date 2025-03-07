@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\RentalRepository;
-use App\Models\Rental;
 use App\Http\Requests\StoreRentalRequest;
 use App\Http\Requests\UpdateRentalRequest;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
 {
-
   protected $rental;
 
   /**
@@ -46,6 +45,7 @@ class RentalController extends Controller
   public function store(StoreRentalRequest $request)
   {
     $rental = $this->rental->create($request->validated());
+
     return response()->json($rental, 201);
   }
 

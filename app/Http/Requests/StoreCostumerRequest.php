@@ -23,6 +23,7 @@ class StoreCostumerRequest extends FormRequest
   {
     return [
       'name' => 'required|string',
+      'email' => 'required|email',
     ];
   }
 
@@ -36,6 +37,9 @@ class StoreCostumerRequest extends FormRequest
     return [
       'name.required' => 'Name is required',
       'name.string' => 'Name must be a string',
+      'email.required' => 'Email is required',
+      'email.email' => 'Email must be a valid email',
+      'emaiol.unique' => 'Email already exists',
     ];
   }
 }

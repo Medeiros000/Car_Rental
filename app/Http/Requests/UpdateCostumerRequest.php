@@ -23,6 +23,7 @@ class UpdateCostumerRequest extends FormRequest
   {
     return [
       'name' => 'sometimes|string',
+      'email' => 'sometimes|email',
     ];
   }
 
@@ -35,6 +36,7 @@ class UpdateCostumerRequest extends FormRequest
   {
     return [
       'name.string' => 'Name must be a string',
+      'email.email' => 'Email must be a valid email',
     ];
   }
 }

@@ -5,9 +5,9 @@
 
 @section('content')
   @php
-    $rotas = ['brands', 'car_models', 'cars', 'costumers', 'rents'];
+    $rotas = ['brands', 'car_models', 'cars', 'costumers', 'rentals'];
     $methods = ['listar', 'criar', 'exibir', 'atualizar', 'deletar'];
-    $route_list_values = include resource_path('data/brands.php');
+    $route_list_values = include resource_path('data/data_routes.php');
   @endphp
 
   <x-header title="Rota brands" :list="$rotas" />
