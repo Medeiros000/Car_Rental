@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     @vite('resources/css/app.css')
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/car.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@yield('title', config('app.name', 'Laravel'))</title>
   </head>

@@ -1,17 +1,16 @@
 @props(['text', 'color', 'background', 'class'])
 @php
-if(isset($color)) {
-  $color = $color;
-} else {
-  $color = 'slate';
-}
-  
+  if (isset($color)) {
+      $color = $color;
+  } else {
+      $color = 'slate';
+  }
+
   $background = $background ?? 'slate';
   $text = $text ?? 'click';
   $class = $class ?? '';
 @endphp
-<button
-  class="{{ $class }} text-{{ $color }}-200 bg-{{ $background }}-800 focus:bg-{{ $background }}-700 active:bg-{{ $background }}-700 hover:bg-{{ $background }}-600 rounded-md py-2 px-4 border border-transparent text-center text-sm transition-all shadow-md hover:shadow-lgfocus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-  type="button">
+<button type="button"
+  class="h-12 w-60 py-2.5 px-5 me-2 mb-2 text-sm font-medium text-slate-100 focus:outline-none bg-white rounded-lg border border-slate-200 hover:bg-slate-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-slate-100 dark:focus:ring-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-600 dark:hover:text-white dark:hover:bg-slate-700">
   {{ $text }}
 </button>

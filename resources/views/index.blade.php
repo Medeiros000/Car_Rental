@@ -12,7 +12,7 @@
         <x-buttons.outlined text='API Documentation' class='w-3xs' background="sky" />
       </a>
       <a href="{{ route('endpoints') }}">
-        <x-buttons.filled text='API Endpoints' color='sky' class='w-3xs' background='sky' />
+        <x-buttons.filled text='API Endpoints' class='w-3xs' background='sky' color='lime'  />
       </a>
     </div>
   </div>
