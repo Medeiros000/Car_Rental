@@ -13,7 +13,7 @@
     <title>@yield('title', config('app.name', 'Laravel'))</title>
   </head>
 
-  <body class="h-full">
+  <body>
     @yield('content')
   </body>
 
