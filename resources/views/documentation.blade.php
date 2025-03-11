@@ -1,2 +1,8 @@
 @extends('layouts.app')
-<p class="text-xs bg-slate-900 text-slate-200">chegamos documentation</p>
+
+@section('title', 'Car Rental API - Documentation')
+
+@section('content')
+@component('components.navbar.top', ['title' => 'Car Rental API', 'links' => ['home', 'documentation', 'endpoints', 'contact'], 'current' => 'documentation'])
+@endcomponent
+@endsection
