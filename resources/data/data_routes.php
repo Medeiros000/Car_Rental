@@ -1,329 +1,328 @@
 <?php
 return ['brands' => [
   [
-    'id'          => 'listar',
-    'name'        => 'Listar Marcas',
+    'id'          => 'list',
+    'name'        => 'List Brands',
     'endpoint'    => 'GET /brands',
-    'description' => 'Retorna uma lista de marcas.',
+    'description' => 'Returns a list of brands.',
     'params'      => [
-      'name (opcional)'       => 'Nome da marca a ser filtrada.',
-      'created_at'            => 'Data de criação da marca.',
-      'updated_at'            => 'Data de atualização da marca.',
-      'filter (opcional)'     => 'Filtros a serem aplicados.',
-      'attributes (opcional)' => 'Atributos específicos das marcas a serem selecionados.'
+      'name (optional)'       => 'Name of the brand to be filtered.',
+      'created_at'            => 'Creation date of the brand.',
+      'updated_at'            => 'Update date of the brand.',
+      'filter (optional)'     => 'Filters to be applied.',
+      'attributes (optional)' => 'Specific attributes of the brands to be selected.'
     ],
     'request'     => null,
     'response'    => '    {"id": 1,"name": "chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}'
   ],
   [
-    'id'          => 'criar',
-    'name'        => 'Criar Nova Marca',
+    'id'          => 'store',
+    'name'        => 'Create New Brand',
     'endpoint'    => 'POST /brands',
-    'description' => 'Armazena uma nova marca.',
+    'description' => 'Stores a new brand.',
     'params'      => [
-      'name (obrigatório)' => 'Nome da marca.',
-      'image (opcional)'   => 'Imagem da marca.'
+      'name (required)' => 'Name of the brand.',
+      'image (optional)'   => 'Image of the brand.'
     ],
     'request'     => '{"name": "fiat","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png"}',
     'response'    => '{"id": 2,"name": "fiat","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}'
   ],
   [
-    'id'          => 'exibir',
-    'name'        => 'Exibir Marca Específica',
+    'id'          => 'show',
+    'name'        => 'Show Specific Brand',
     'endpoint'    => 'GET /brands/{id}',
-    'description' => 'Exibe uma marca específica.',
+    'description' => 'Displays a specific brand.',
     'params'      => [
-      'id (obrigatório)' => 'ID da marca.'
+      'id (required)' => 'ID of the brand.'
     ],
     'request'     => null,
     'response'    => '{"id": 1,"name": "chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}'
   ],
   [
-    'id'          => 'atualizar',
-    'name'        => 'Atualizar Marca',
+    'id'          => 'update',
+    'name'        => 'Update Brand',
     'endpoint'    => 'PUT /brands/{id}',
-    'description' => 'Atualiza uma marca específica.',
+    'description' => 'Updates a specific brand.',
     'params'      => [
-      'id (obrigatório)' => 'ID da marca.',
-      'name (opcional)'  => 'Novo nome da marca.',
-      'image (opcional)' => 'Nova imagem da marca.'
+      'id (required)' => 'ID of the brand.',
+      'name (optional)'  => 'New name of the brand.',
+      'image (optional)' => 'New image of the brand.'
     ],
     'request'     => '{"name": "chevrolet", "image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png"}',
-    'response'    => '{"id": 1,"name":
-"chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}'
+    'response'    => '{"id": 1,"name": "chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}'
   ],
   [
-    'id'          => 'deletar',
-    'name'        => 'Deletar Marca',
+    'id'          => 'destroy',
+    'name'        => 'Delete Brand',
     'endpoint'    => 'DELETE /brands/{id}',
-    'description' => 'Remove uma marca específica.',
+    'description' => 'Removes a specific brand.',
     'params'      => [
-      'id (obrigatório)' => 'ID da marca.'
+      'id (required)' => 'ID of the brand.'
     ],
     'request'     => '{"msg": "Brand deleted"}'
   ]
 ], 'car_models' => [
   [
-    'id'          => 'listar',
-    'name'        => 'Listar Modelos de Carro',
+    'id'          => 'list',
+    'name'        => 'List Car Models',
     'endpoint'    => 'GET /car_models',
-    'description' => 'Retorna uma lista de modelos de carro.',
+    'description' => 'Returns a list of car models.',
     'params'      => [
-      'brand_id (opcional)'   => 'ID da marca a ser filtrada.',
-      'filter (opcional)'     => 'Filtros a serem aplicados.',
-      'attributes (opcional)' => 'Atributos específicos dos modelos de carro a serem selecionados.'
+      'brand_id (optional)'   => 'ID of the brand to be filtered.',
+      'filter (optional)'     => 'Filters to be applied.',
+      'attributes (optional)' => 'Specific attributes of the car models to be selected.'
     ],
     'request'     => null,
     'response'    => '    {"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}'
   ],
   [
-    'id'          => 'criar',
-    'name'        => 'Criar Novo Modelo de Carro',
+    'id'          => 'store',
+    'name'        => 'Create New Car Model',
     'endpoint'    => 'POST /car_models',
-    'description' => 'Armazena um novo modelo de carro.',
+    'description' => 'Stores a new car model.',
     'params'      => [
-      'brand_id (obrigatório)'  => 'ID da marca do modelo de carro.',
-      'name (obrigatório)'      => 'Nome do modelo de carro.',
-      'image (opcional)'        => 'Imagem do modelo de carro.',
-      'doors_number (opcional)' => 'Número de portas do modelo de carro.',
-      'seats (opcional)'        => 'Número de assentos do modelo de carro.',
-      'air_bag (opcional)'      => 'Presença de air bag no modelo de carro.',
-      'abs (opcional)'          => 'Presença de freios ABS no modelo de carro.'
+      'brand_id (required)'  => 'ID of the brand of the car model.',
+      'name (required)'      => 'Name of the car model.',
+      'image (optional)'        => 'Image of the car model.',
+      'doors_number (optional)' => 'Number of doors of the car model.',
+      'seats (optional)'        => 'Number of seats of the car model.',
+      'air_bag (optional)'      => 'Presence of air bag in the car model.',
+      'abs (optional)'          => 'Presence of ABS brakes in the car model.'
     ],
     'request'     => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false}',
     'response'    => '{"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}'
   ],
   [
-    'id'          => 'exibir',
-    'name'        => 'Exibir Modelo de Carro Específico',
+    'id'          => 'show',
+    'name'        => 'Show Specific Car Model',
     'endpoint'    => 'GET /car_models/{id}',
-    'description' => 'Exibe um modelo de carro específico.',
+    'description' => 'Displays a specific car model.',
     'params'      => [
-      'id (obrigatório)' => 'ID do modelo de carro.'
+      'id (required)' => 'ID of the car model.'
     ],
     'request'     => null,
     'response'    => '{"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}'
   ],
   [
-    'id'          => 'atualizar',
-    'name'        => 'Atualizar Modelo de Carro',
+    'id'          => 'update',
+    'name'        => 'Update Car Model',
     'endpoint'    => 'PUT /car_models/{id}',
-    'description' => 'Atualiza um modelo de carro específico.',
+    'description' => 'Updates a specific car model.',
     'params'      => [
-      'id (obrigatório)'        => 'ID do modelo de carro.',
-      'brand_id (opcional)'     => 'Nova marca do modelo de carro.',
-      'name (opcional)'         => 'Novo nome do modelo de carro.',
-      'image (opcional)'        => 'Nova imagem do modelo de carro.',
-      'doors_number (opcional)' => 'Novo número de portas do modelo de carro.',
-      'seats (opcional)'        => 'Novo número de assentos do modelo de carro.',
-      'air_bag (opcional)'      => 'Nova presença de air bag no modelo de carro.',
-      'abs (opcional)'          => 'Nova presença de freios ABS no modelo de carro.'
+      'id (required)'        => 'ID of the car model.',
+      'brand_id (optional)'     => 'New brand of the car model.',
+      'name (optional)'         => 'New name of the car model.',
+      'image (optional)'        => 'New image of the car model.',
+      'doors_number (optional)' => 'New number of doors of the car model.',
+      'seats (optional)'        => 'New number of seats of the car model.',
+      'air_bag (optional)'      => 'New presence of air bag in the car model.',
+      'abs (optional)'          => 'New presence of ABS brakes in the car model.'
     ],
     'request'     => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false}',
     'response'    => '{"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}'
   ],
   [
-    'id'          => 'deletar',
-    'name'        => 'Deletar Modelo de Carro',
+    'id'          => 'destroy',
+    'name'        => 'Delete Car Model',
     'endpoint'    => 'DELETE /car_models/{id}',
-    'description' => 'Remove um modelo de carro específico.',
+    'description' => 'Removes a specific car model.',
     'params'      => [
-      'id (obrigatório)' => 'ID do modelo de carro.'
+      'id (required)' => 'ID of the car model.'
     ],
     'request'     => '{"msg": "Car model deleted"}'
   ]
 ], 'cars' => [
   [
-    'id'          => 'listar',
-    'name'        => 'Listar Carros',
+    'id'          => 'list',
+    'name'        => 'List Cars',
     'endpoint'    => 'GET /cars',
-    'description' => 'Retorna uma lista de carros.',
+    'description' => 'Returns a list of cars.',
     'params'      => [
-      'car_model_id (opcional)' => 'ID do modelo de carro a ser filtrado.',
-      'filter (opcional)'       => 'Filtros a serem aplicados.',
-      'attributes (opcional)'   => 'Atributos específicos dos carros a serem selecionados.'
+      'car_model_id (optional)' => 'ID of the car model to be filtered.',
+      'filter (optional)'       => 'Filters to be applied.',
+      'attributes (optional)'   => 'Specific attributes of the cars to be selected.'
     ],
     'request'     => null,
     'response'    => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}'
   ],
   [
-    'id'          => 'criar',
-    'name'        => 'Criar Novo Carro',
+    'id'          => 'store',
+    'name'        => 'Create New Car',
     'endpoint'    => 'POST /cars',
-    'description' => 'Armazena um novo carro.',
+    'description' => 'Stores a new car.',
     'params'      => [
-      'car_model_id (obrigatório)' => 'ID do modelo de carro do carro.',
-      'plate (obrigatório)'        => 'Placa do carro.',
-      'available (opcional)'       => 'Disponibilidade do carro.',
-      'km (opcional)'              => 'Quilometragem do carro.'
+      'car_model_id (required)' => 'ID of the car model of the car.',
+      'plate (required)'        => 'Car plate.',
+      'available (optional)'    => 'Car availability.',
+      'km (optional)'           => 'Car mileage.'
     ],
     'request'     => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000}',
     'response'    => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}'
   ],
   [
-    'id'          => 'exibir',
-    'name'        => 'Exibir Carro Específico',
+    'id'          => 'show',
+    'name'        => 'Show Specific Car',
     'endpoint'    => 'GET /cars/{id}',
-    'description' => 'Exibe um carro específico.',
+    'description' => 'Displays a specific car.',
     'params'      => [
-      'id (obrigatório)' => 'ID do carro.'
+      'id (required)' => 'Car ID.'
     ],
     'request'     => null,
     'response'    => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}'
   ],
   [
-    'id'          => 'atualizar',
-    'name'        => 'Atualizar Carro',
+    'id'          => 'update',
+    'name'        => 'Update Car',
     'endpoint'    => 'PUT /cars/{id}',
-    'description' => 'Atualiza um carro específico.',
+    'description' => 'Updates a specific car.',
     'params'      => [
-      'id (obrigatório)'        => 'ID do carro.',
-      'car_model_id (opcional)' => 'Novo modelo de carro do carro.',
-      'plate (opcional)'        => 'Nova placa do carro.',
-      'available (opcional)'    => 'Nova disponibilidade do carro.',
-      'km (opcional)'           => 'Nova quilometragem do carro.'
+      'id (required)'        => 'Car ID.',
+      'car_model_id (optional)' => 'New car model of the car.',
+      'plate (optional)'        => 'New car plate.',
+      'available (optional)'    => 'New car availability.',
+      'km (optional)'           => 'New car mileage.'
     ],
     'request'     => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000}',
     'response'    => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}'
   ],
   [
-    'id'          => 'deletar',
-    'name'        => 'Deletar Carro',
+    'id'          => 'destroy',
+    'name'        => 'Delete Car',
     'endpoint'    => 'DELETE /cars/{id}',
-    'description' => 'Remove um carro específico.',
+    'description' => 'Removes a specific car.',
     'params'      => [
-      'id (obrigatório)' => 'ID do carro.'
+      'id (required)' => 'Car ID.'
     ],
     'request'     => '{"msg": "Car deleted"}'
   ]
-], 'costumers' => [
+], 'customers' => [
   [
-    'id'          => 'listar',
-    'name'        => 'Listar Clientes',
-    'endpoint'    => 'GET /costumers',
-    'description' => 'Retorna uma lista de clientes.',
+    'id'          => 'list',
+    'name'        => 'List Customers',
+    'endpoint'    => 'GET /customers',
+    'description' => 'Returns a list of customers.',
     'params'      => [
-      'filter (opcional)'     => 'Filtros a serem aplicados.',
-      'attributes (opcional)' => 'Atributos específicos dos clientes a serem selecionados.'
+      'filter (optional)'     => 'Filters to be applied.',
+      'attributes (optional)' => 'Specific attributes of the customers to be selected.'
     ],
     'request'     => null,
     'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-07T18:08:42.000000Z","id": 3}'
   ],
   [
-    'id'          => 'criar',
-    'name'        => 'Criar Novo Cliente',
-    'endpoint'    => 'POST /costumers',
-    'description' => 'Armazena um novo cliente.',
+    'id'          => 'store',
+    'name'        => 'Create New Customer',
+    'endpoint'    => 'POST /customers',
+    'description' => 'Stores a new customer.',
     'params'      => [
-      'name (obrigatório)'  => 'Nome do cliente.',
-      'email (obrigatório)' => 'Email do cliente.'
+      'name (required)'  => 'Customer name.',
+      'email (required)' => 'Customer email.'
     ],
     'request'     => '{"name": "Antonio", "email": "antonio@test.com"}',
     'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-07T18:08:42.000000Z","id": 3}'
   ],
   [
-    'id'          => 'exibir',
-    'name'        => 'Exibir Cliente Específico',
-    'endpoint'    => 'GET /costumers/{id}',
-    'description' => 'Exibe um cliente específico.',
+    'id'          => 'show',
+    'name'        => 'Show Specific Customer',
+    'endpoint'    => 'GET /customers/{id}',
+    'description' => 'Displays a specific customer.',
     'params'      => [
-      'id (obrigatório)' => 'ID do cliente.'
+      'id (required)' => 'Customer ID.'
     ],
     'request'     => null,
     'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-07T18:08:42.000000Z","id": 3}'
   ],
   [
-    'id'          => 'atualizar',
-    'name'        => 'Atualizar Cliente',
-    'endpoint'    => 'PUT /costumers/{id}',
-    'description' => 'Atualiza um cliente específico.',
+    'id'          => 'update',
+    'name'        => 'Update Customer',
+    'endpoint'    => 'PUT /customers/{id}',
+    'description' => 'Updates a specific customer.',
     'params'      => [
-      'id (obrigatório)' => 'ID do cliente.',
-      'name (opcional)'  => 'Novo nome do cliente.',
-      'email (opcional)' => 'Novo email do cliente.'
+      'id (required)' => 'Customer ID.',
+      'name (optional)'  => 'New customer name.',
+      'email (optional)' => 'New customer email.'
     ],
-    'request'     => '{"name": "Antonnio", "email": "antonio@test.com"}',
-    'response'    => '{"name": "Antonnio","email": "antonnio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-09T07:01:20.000000Z","id": 3}'
+    'request'     => '{"name": "Antonio", "email": "antonio@test.com"}',
+    'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-09T07:01:20.000000Z","id": 3}'
   ],
   [
-    'id'          => 'deletar',
-    'name'        => 'Deletar Cliente',
-    'endpoint'    => 'DELETE /costumers/{id}',
-    'description' => 'Remove um cliente específico.',
+    'id'          => 'destroy',
+    'name'        => 'Delete Customer',
+    'endpoint'    => 'DELETE /customers/{id}',
+    'description' => 'Removes a specific customer.',
     'params'      => [
-      'id (obrigatório)' => 'ID do cliente.'
+      'id (required)' => 'Customer ID.'
     ],
-    'response'    => '{"msg": "Costumer deleted"}'
+    'response'    => '{"msg": "Customer deleted"}'
   ]
 ], 'rentals' => [
   [
-    'id'          => 'listar',
-    'name'        => 'Listar Aluguéis',
+    'id'          => 'list',
+    'name'        => 'List Rentals',
     'endpoint'    => 'GET /rentals',
-    'description' => 'Retorna uma lista de aluguéis.',
+    'description' => 'Returns a list of rentals.',
     'params'      => [
-      'costumer_id (opcional)' => 'ID do cliente a ser filtrado.',
-      'filter (opcional)'      => 'Filtros a serem aplicados.',
-      'attributes (opcional)'  => 'Atributos específicos dos aluguéis a serem selecionados.'
+      'customer_id (optional)' => 'Customer ID to be filtered.',
+      'filter (optional)'      => 'Filters to be applied.',
+      'attributes (optional)'  => 'Specific attributes of the rentals to be selected.'
     ],
     'request'     => null,
-    'response'    => '    {"id": 1,"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
+    'response'    => '    {"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
   ],
   [
-    'id'          => 'criar',
-    'name'        => 'Criar Novo Aluguel',
+    'id'          => 'store',
+    'name'        => 'Create New Rental',
     'endpoint'    => 'POST /rentals',
-    'description' => 'Armazena um novo aluguel.',
+    'description' => 'Stores a new rental.',
     'params'      => [
-      'costumer_id (obrigatório)' => 'ID do cliente do aluguel.',
-      'car_id (obrigatório)'      => 'ID do carro do aluguel.',
-      'start_date_period (obrigatório)'  => 'Data de início do aluguel.',
-      'final_date_expected_period' => 'Data de término esperada do aluguel.',
-      'end_date_realized_period (obrigatório)'    => 'Data de término do aluguel.',
-      'daily_value (opcional)'     => 'Valor diário do aluguel.',
-      'initial_km (opcional)'      => 'Quilometragem inicial do aluguel.',
-      'final_km (opcional)'        => 'Quilometragem final do aluguel.'
+      'customer_id (required)'           => 'Rental customer ID.',
+      'car_id (required)'                => 'Rental car ID.',
+      'start_date_period (required)'     => 'Rental start date.',
+      'final_date_expected_period'       => 'Expected end date of the rental.',
+      'end_date_realized_period (required)' => 'Actual end date of the rental.',
+      'daily_value (optional)'           => 'Daily rate of the rental.',
+      'initial_km (optional)'            => 'Initial mileage of the rental.',
+      'final_km (optional)'              => 'Final mileage of the rental.'
     ],
-    'request'     => '{"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
-    'response'    => '{"id": 1,"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
+    'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
+    'response'    => '{"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
   ],
   [
-    'id'          => 'exibir',
-    'name'        => 'Exibir Aluguel Específico',
+    'id'          => 'show',
+    'name'        => 'Show Specific Rental',
     'endpoint'    => 'GET /rentals/{id}',
-    'description' => 'Exibe um aluguel específico.',
+    'description' => 'Displays a specific rental.',
     'params'      => [
-      'id (obrigatório)' => 'ID do aluguel.'
+      'id (required)' => 'Rental ID.'
     ],
     'request'     => null,
-    'response'    => '{"id": 1,"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
+    'response'    => '{"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
   ],
   [
-    'id'          => 'atualizar',
-    'name'        => 'Atualizar Aluguel',
+    'id'          => 'update',
+    'name'        => 'Update Rental',
     'endpoint'    => 'PUT /rentals/{id}',
-    'description' => 'Atualiza um aluguel específico.',
+    'description' => 'Updates a specific rental.',
     'params'      => [
-      'id (obrigatório)'                => 'ID do aluguel.',
-      'costumer_id (opcional)'          => 'Novo cliente do aluguel.',
-      'car_id (opcional)'               => 'Novo carro do aluguel.',
-      'start_date_period (opcional)'    => 'Nova data de início do aluguel.',
-      'final_date_expected_period (opcional)' => 'Nova data de término esperada do aluguel.',
-      'end_date_realized_period (opcional)'   => 'Nova data de término do aluguel.',
-      'daily_value (opcional)'          => 'Novo valor diário do aluguel.',
-      'initial_km (opcional)'           => 'Nova quilometragem inicial do aluguel.',
-      'final_km (opcional)'             => 'Nova quilometragem final do aluguel.'
+      'id (required)'                 => 'Rental ID.',
+      'customer_id (optional)'        => 'New rental customer.',
+      'car_id (optional)'             => 'New rental car.',
+      'start_date_period (optional)'  => 'New start date of the rental.',
+      'final_date_expected_period (optional)' => 'New expected end date of the rental.',
+      'end_date_realized_period (optional)'   => 'New actual end date of the rental.',
+      'daily_value (optional)'        => 'New daily rate of the rental.',
+      'initial_km (optional)'         => 'New initial mileage of the rental.',
+      'final_km (optional)'           => 'New final mileage of the rental.'
     ],
-    'request'     => '{"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
-    'response'    => '{"id": 1,"costumer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
+    'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
+    'response'    => '{"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}'
   ],
   [
-    'id'          => 'deletar',
-    'name'        => 'Deletar Aluguel',
+    'id'          => 'destroy',
+    'name'        => 'Delete Rental',
     'endpoint'    => 'DELETE /rentals/{id}',
-    'description' => 'Remove um aluguel específico.',
+    'description' => 'Removes a specific rental.',
     'params'      => [
-      'id (obrigatório)' => 'ID do aluguel.'
+      'id (required)' => 'Rental ID.'
     ],
     'request'     => '{"msg": "Rental deleted"}'
   ]

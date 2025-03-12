@@ -7,19 +7,30 @@
   @php
     $rotas = ['brands', 'car_models', 'cars', 'costumers', 'rentals'];
     $methods = ['listar', 'criar', 'exibir', 'atualizar', 'deletar'];
+    $methods = ['list', 'store', 'show', 'update', 'destroy'];
     $route_list_values = include resource_path('data/data_routes.php');
   @endphp
-  <header class="fixed top-0 left-0 right-0">
-    <x-header title="Endpoints" />
-  </header>
-  <aside id="sidebar-multi-level-sidebar"
-    class="text-sm bg-slate-900 fixed top-21 left-0 z-40 w-50 transition-transform -translate-x-full sm:translate-x-0 overflow-x-auto"
-    aria-label="Sidebar" style="height: 250rem; margin-bottom: 200rem">
-    <x-aside.menu :routes_list="$rotas" :methods_list="$methods" />
-  </aside>
-  <div class="p-4 sm:ml-50 mt-14">
-    <div class="h-full">
-      <x-foreach :route_list_values="$route_list_values" />
+
+  @component('components.header.top', [
+      'title' => 'Car Rental API',
+      'links' => ['home', 'documentation', 'endpoints', 'contact'],
+      'current' => 'endpoints',
+  ])
+  @endcomponent
+
+  <main class="fixed top-23 left-0 sm:[fixed top-16 left-0] static z-2">
+
+    @component('components.aside.separator-sidebar', [
+        'routes_list' => $rotas,
+        'methods_list' => $methods,
+    ])
+    @endcomponent
+
+    <div class="p-4 sm:ml-64 my-20">
+      <div class="h-full">
+        <x-foreach :route_list_values="$route_list_values" />
+      </div>
     </div>
-  </div>
+
+  </main>
 @endsection

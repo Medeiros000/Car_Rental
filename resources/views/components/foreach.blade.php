@@ -1,7 +1,7 @@
 @props(['route_list_values'])
 
 @foreach ($route_list_values as $indice => $routes)
-  <div id="{{ $indice }}" class="invisible"></div>
+  <div id="{{ $indice }}" class="invisible w-full"></div>
   @foreach ($routes as $route)
     <section id="{{ $indice . $route['id'] }}" class="anchor mt-5 bg-slate-200 rounded-lg p-4">
       <div class="text-sm">

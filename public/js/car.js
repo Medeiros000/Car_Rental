@@ -9,40 +9,36 @@ function scrollOffset(id) {
         top: targetPosition,
         behavior: "smooth", // Rolagem suave
     });
-
-    // Fechar o menu lateral ao clicar em um item
-    const sidebar = document.getElementById("sidebar-multi-level-sidebar");
-    const menuToggle = document.getElementById("menu-toggle");
-    sidebar.classList.add("-translate-x-full");
-    if (menuToggle) {
-        menuToggle.checked = false;
+    if (window.innerWidth < 630) {
+        // Fechar o menu lateral ao clicar em um item
+        document.getElementById("sidebar-toggle").click();
     }
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    const menuToggle = document.getElementById("menu-toggle");
-    const sidebar = document.getElementById("sidebar-multi-level-sidebar");
+// document.addEventListener("click", function (e) {
+//     if (window.innerWidth < 630) {
+//         const sidebar = document.getElementById("separator-sidebar");
+//         if (sidebar && !sidebar.contains(e.target)) {
+//             document.getElementById("sidebar-toggle").click();
+//         }
+//     }
+// });
 
-    if (menuToggle) {
-        menuToggle.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", function () {
+    document
+        .getElementById("sidebar-toggle")
+        .addEventListener("click", function () {
+            console.log("click");
+            var sidebar = document.getElementById("separator-sidebar");
+            var iconRight = document.getElementById("icon-right");
+            var iconLeft = document.getElementById("icon-left");
+
             if (sidebar.classList.contains("-translate-x-full")) {
-                sidebar.classList.remove("-translate-x-full");
+                iconRight.classList.add("hidden");
+                iconLeft.classList.remove("hidden");
             } else {
-                sidebar.classList.add("-translate-x-full");
+                iconRight.classList.remove("hidden");
+                iconLeft.classList.add("hidden");
             }
         });
-    }
-
-    // Adicionar evento de clique aos itens do menu
-    const menuItems = document.querySelectorAll(
-        "#sidebar-multi-level-sidebar a"
-    );
-    menuItems.forEach((item) => {
-        item.addEventListener("click", () => {
-            sidebar.classList.add("-translate-x-full");
-            if (menuToggle) {
-                menuToggle.checked = false;
-            }
-        });
-    });
 });
