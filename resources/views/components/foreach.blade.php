@@ -3,10 +3,20 @@
 @foreach ($route_list_values as $indice => $routes)
   <div id="{{ $indice }}" class="invisible w-full"></div>
   @foreach ($routes as $route)
+  @php
+    $endpoint = explode(' ', $route['endpoint']);
+    $badge = '';
+    match($endpoint[0]) {
+        'GET' => $badge = 'b_green',
+        'POST' => $badge = 'b_yellow',
+        'PUT', 'PATCH' => $badge = 'b_blue',
+        'DELETE' => $badge = 'b_red',
+    };
+  @endphp
     <section id="{{ $indice . $route['id'] }}" class="anchor mt-5 bg-slate-200 rounded-lg p-4">
       <div class="text-sm">
         <p class="text-xl font-bold pb-4"># {{ $route['name'] }}</p>
-        <p><strong>Endpoint:</strong> {{ $route['endpoint'] }}</p>
+        <p><strong>Endpoint:</strong> @component("components.badges.$badge", ['value' => $endpoint[0]]) @endcomponent {{ $endpoint[1] }}</p>
         <p><strong>Descrição:</strong> {{ $route['description'] }}</p>
         <p><strong>Parâmetros:</strong></p>
         <ul>

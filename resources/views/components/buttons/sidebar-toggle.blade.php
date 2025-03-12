@@ -1,6 +1,6 @@
 <button id="sidebar-toggle" data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
   aria-controls="separator-sidebar" type="button"
-  class="absolute top-2 -right-10 rounded-r-lg inline-flex items-center p-2 mt-2 ms-3 text-sm bg-slate-900 text-gray-500 sm:hidden hover:bg-gray-100 focus:outline-none text-white dark:hover:bg-slate-900 dark:focus:ring-gray-600">
+  class="cursor-pointer absolute top-2 -right-10 rounded-r-lg inline-flex items-center p-2 mt-2 ms-3 text-sm bg-slate-900 text-gray-500 sm:hidden hover:bg-gray-100 focus:outline-none text-white dark:hover:bg-slate-900 dark:focus:ring-gray-600">
   <span class="sr-only">Open sidebar</span>
   <svg id="icon-right" inert class="h-8 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
     <path fill-rule="evenodd"
