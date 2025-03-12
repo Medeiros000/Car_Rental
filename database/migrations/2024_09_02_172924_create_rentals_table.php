@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('costumer_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('car_id');
             $table->dateTime('start_date_period');
             $table->dateTime('final_date_expected_period');
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps();
     
             //foreign key (constraints)
-            $table->foreign('costumer_id')->references('id')->on('costumers');
+            $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('car_id')->references('id')->on('cars');
         });
     }

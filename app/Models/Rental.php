@@ -10,7 +10,7 @@ class Rental extends Model
     use HasFactory;
 
     protected $fillable = [
-        'costumer_id',
+        'customer_id',
         'car_id',
         'start_date_period',
         'final_date_expected_period',
@@ -20,9 +20,9 @@ class Rental extends Model
         'final_km',
     ];
 
-    public function costumer()
+    public function customer()
     {
-        return $this->belongsTo(Costumer::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function car()

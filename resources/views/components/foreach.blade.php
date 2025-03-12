@@ -7,10 +7,10 @@
     $endpoint = explode(' ', $route['endpoint']);
     $badge = '';
     match($endpoint[0]) {
-        'GET' => $badge = 'b_green',
-        'POST' => $badge = 'b_yellow',
-        'PUT', 'PATCH' => $badge = 'b_blue',
-        'DELETE' => $badge = 'b_red',
+        'GET' => $badge = 'b-green',
+        'POST' => $badge = 'b-yellow',
+        'PUT', 'PATCH' => $badge = 'b-blue',
+        'DELETE' => $badge = 'b-red',
     };
   @endphp
     <section id="{{ $indice . $route['id'] }}" class="anchor mt-5 bg-slate-200 rounded-lg p-4">
