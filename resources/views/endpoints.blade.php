@@ -17,7 +17,7 @@
   ])
   @endcomponent
 
-  <main class="fixed top-23 left-0 sm:[fixed top-16 left-0] static z-2">
+  <main class="top-23 sm:[fixed left-0] z-2 static fixed left-0">
 
     @component('components.aside.separator-sidebar', [
         'routes_list' => $rotas,
@@ -25,9 +25,9 @@
     ])
     @endcomponent
 
-    <div class="p-4 sm:ml-64 my-20">
+    <div class="my-20 p-4 sm:ml-64">
       <div class="h-full">
-        <x-foreach :route_list_values="$route_list_values" />
+        <x-data-endpoints :route_list_values="$route_list_values" />
       </div>
     </div>
 

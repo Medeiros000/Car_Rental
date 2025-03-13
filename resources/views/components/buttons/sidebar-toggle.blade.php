@@ -1,6 +1,6 @@
 <button id="sidebar-toggle" data-drawer-target="separator-sidebar" data-drawer-toggle="separator-sidebar"
   aria-controls="separator-sidebar" type="button"
-  class="cursor-pointer absolute top-2 -right-10 rounded-r-lg inline-flex items-center p-2 mt-2 ms-3 text-sm bg-slate-900 text-gray-500 sm:hidden hover:bg-gray-100 focus:outline-none text-white dark:hover:bg-slate-900 dark:focus:ring-gray-600">
+  class="absolute -right-10 top-2 ms-3 mt-2 inline-flex cursor-pointer items-center rounded-r-lg bg-slate-900 p-2 text-sm text-gray-500 text-white hover:bg-gray-100 focus:outline-none sm:hidden dark:hover:bg-slate-900 dark:focus:ring-gray-600">
   <span class="sr-only">Open sidebar</span>
   <svg id="icon-right" inert class="h-8 w-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
     <path fill-rule="evenodd"
@@ -8,7 +8,7 @@
       clip-rule="evenodd" />
     <path d="M12 20h8c1.1046 0 2-.8954 2-2V6c0-1.10457-.8954-2-2-2h-8v16Z" />
   </svg>
-  <svg id="icon-left" inert class="h-8 w-6 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+  <svg id="icon-left" inert class="hidden h-8 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
     fill="currentColor" viewBox="0 0 24 24">
     <path d="M13 21h6c1.1046 0 2-.8954 2-2V5c0-1.10457-.8954-2-2-2h-6v18Z" />
     <path fill-rule="evenodd"

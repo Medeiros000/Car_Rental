@@ -12,112 +12,112 @@ use Illuminate\Support\Facades\Storage;
 class BrandController extends Controller
 {
 
-	protected $brand;
+  protected $brand;
 
-	/**
-	 * BrandController constructor.
-	 * @param Brand $brand
-	 * @return void
-	 */
-	public function __construct(Brand $brand)
-	{
-		$this->brand = $brand;
-	}
+  /**
+   * BrandController constructor.
+   * @param Brand $brand
+   * @return void
+   */
+  public function __construct(Brand $brand)
+  {
+    $this->brand = $brand;
+  }
 
-	/**
-	 * Display a listing of the resource.
-	 * @return \Illuminate\Http\JsonResponse
-	 */
-	public function index(Request $request)
-	{
-		$brandRepository = new BrandRepository($this->brand);
+  /**
+   * Display a listing of the resource.
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function index(Request $request)
+  {
+    $brandRepository = new BrandRepository($this->brand);
 
-		if ($request->has('car_model_attributes')) {
-			$car_model_attributes = 'car_models:id,' . $request->get('car_model_attributes');
-			$brandRepository->selectAttributesRelationship($car_model_attributes);
-		} else {
-			$brandRepository->selectAttributesRelationship('car_models');
-		}
+    if ($request->has('car_model_attributes')) {
+      $car_model_attributes = 'car_models:id,' . $request->get('car_model_attributes');
+      $brandRepository->selectAttributesRelationship($car_model_attributes);
+    } else {
+      $brandRepository->selectAttributesRelationship('car_models');
+    }
 
-		if ($request->has('filter')) {
-			$brandRepository->filter($request->get('filter'));
-		}
+    if ($request->has('filter')) {
+      $brandRepository->filter($request->get('filter'));
+    }
 
-		if ($request->has('attributes')) {
-			$brandRepository->selectAttributes($request->get('attributes'));
-		}
+    if ($request->has('attributes')) {
+      $brandRepository->selectAttributes($request->get('attributes'));
+    }
 
-		return response()->json($brandRepository->getResults(), 200);
-	}
+    return response()->json($brandRepository->getResults(), 200);
+  }
 
-	/**
-	 * Store a newly created resource in storage.
-	 * @param StoreBrandRequest $request
-	 * @return \Illuminate\Http\JsonResponse
-	 */
-	public function store(StoreBrandRequest $request)
-	{
-		$image = $request->file('image');
-		$image_urn = $image->store('images/brand', 'public');
+  /**
+   * Store a newly created resource in storage.
+   * @param StoreBrandRequest $request
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function store(StoreBrandRequest $request)
+  {
+    $image = $request->file('image');
+    $image_urn = $image->store('images/brand', 'public');
 
-		$brand = $this->brand->create([
-			'name' => $request->name,
-			'image' => $image_urn,
-		]);
-		return response()->json($brand, 201);
-	}
+    $brand = $this->brand->create([
+      'name' => $request->name,
+      'image' => $image_urn,
+    ]);
+    return response()->json($brand, 201);
+  }
 
-	/**
-	 * Display the specified resource.
-	 * 
-	 * @param int $id
-	 * @return Brand
-	 */
-	public function show($id)
-	{
-		$brand = $this->brand->find($id);
-		if ($brand) {
-			return response()->json($brand, 200);
-		} else {
-			return response()->json(['msg' => 'Brand not found'], 404);
-		}
-	}
+  /**
+   * Display the specified resource.
+   * 
+   * @param int $id
+   * @return Brand
+   */
+  public function show($id)
+  {
+    $brand = $this->brand->find($id)->load('car_models');
+    if ($brand) {
+      return response()->json($brand, 200);
+    } else {
+      return response()->json(['msg' => 'Brand not found'], 404);
+    }
+  }
 
-	/**
-	 * Update the specified resource in storage.
-	 */
-	public function update(UpdateBrandRequest $request, $id)
-	{
-		$brand = $this->brand->find($id);
-		if (!$brand) {
-			return response()->json(['msg' => 'Brand not found'], 404);
-		}
-		if ($request->file('image')) {
-			Storage::disk('public')->delete($brand->image);
-		}
-		$image = $request->file('image');
-		$image_urn = $image->store('images/brand', 'public');
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(UpdateBrandRequest $request, $id)
+  {
+    $brand = $this->brand->find($id);
+    if (!$brand) {
+      return response()->json(['msg' => 'Brand not found'], 404);
+    }
+    if ($request->file('image')) {
+      Storage::disk('public')->delete($brand->image);
+    }
+    $image = $request->file('image');
+    $image_urn = $image->store('images/brand', 'public');
 
-		$brand->update([
-			'name' => $request->name,
-			'image' => $image_urn,
-		]);
-		return response()->json($brand, 200);
-	}
+    $brand->update([
+      'name' => $request->name,
+      'image' => $image_urn,
+    ]);
+    return response()->json($brand, 201);
+  }
 
-	/**
-	 * Remove the specified resource from storage.
-	 */
-	public function destroy($id)
-	{
-		$brand = $this->brand->find($id);
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy($id)
+  {
+    $brand = $this->brand->find($id);
 
-		if (!$brand) {
-			return response()->json(['msg' => 'Brand not found'], 404);
-		}
+    if (!$brand) {
+      return response()->json(['msg' => 'Brand not found'], 404);
+    }
 
-		Storage::disk('public')->delete($brand->image);
-		$brand->delete();
-		return response()->json(['msg' => 'Brand deleted'], 200);
-	}
+    Storage::disk('public')->delete($brand->image);
+    $brand->delete();
+    return response()->json(['msg' => 'Brand deleted'], 200);
+  }
 }
