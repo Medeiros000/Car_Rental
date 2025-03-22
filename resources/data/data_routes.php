@@ -7,8 +7,6 @@ return ['brands' => [
     'description' => 'Returns a list of brands.',
     'params'      => [
       'name (optional)'       => 'Name of the brand to be filtered.',
-      'created_at'            => 'Creation date of the brand.',
-      'updated_at'            => 'Update date of the brand.',
       'filter (optional)'     => 'Filters to be applied.',
       'attributes (optional)' => 'Specific attributes of the brands to be selected.'
     ],

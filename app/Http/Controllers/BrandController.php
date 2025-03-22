@@ -85,6 +85,9 @@ class BrandController extends Controller
 
   /**
    * Update the specified resource in storage.
+   * @param UpdateBrandRequest $request
+   * @param int $id
+   * @return \Illuminate\Http\JsonResponse
    */
   public function update(UpdateBrandRequest $request, $id)
   {

@@ -7,9 +7,9 @@
       $endpoint = explode(' ', $route['endpoint']);
       $badge = '';
       match ($endpoint[0]) {
-          'GET' => ($badge = 'b-green'),
-          'POST' => ($badge = 'b-yellow'),
-          'PUT', 'PATCH' => ($badge = 'b-blue'),
+          'GET' => ($badge = 'b-blue'),
+          'POST' => ($badge = 'b-green'),
+          'PUT', 'PATCH' => ($badge = 'b-yellow'),
           'DELETE' => ($badge = 'b-red'),
       };
     @endphp

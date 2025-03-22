@@ -20,4 +20,9 @@ class WebController extends Controller
   {
     return view('endpoints');
   }
+
+  public function contact()
+  {
+    return view('contact');
+  }
 }
