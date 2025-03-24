@@ -8,8 +8,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="https://flowbite.com/docs/flowbite.min.js"></script>
-    @vite('resources/css/app.css')
-    <script src="{{ asset('js/car.js') }}" defer></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>@yield('title', config('app.name', 'Laravel'))</title>
   </head>
 
