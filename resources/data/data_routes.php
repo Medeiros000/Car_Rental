@@ -59,11 +59,12 @@ return [
         'image;png;required;New image of the brand',
         '_method;string;required;put'
       ],
-      'request' => '{"name": "chevrolet", "image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png"}',
+      'request' => '{"name": "chevrolet", "image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png", "_method": "put"}',
       'response' => '{"id": 1,"name": "chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -77,11 +78,12 @@ return [
         'image;png;optional;New image of the brand',
         '_method;string;required;patch'
       ],
-      'request' => '{"name": "chevrolet", "image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png"}',
+      'request' => '{"name": "chevrolet", "image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png", "_method": "patch"}',
       'response' => '{"id": 1,"name": "chevrolet","image": "images/brand/AFakjlU4mBTUyZavTYJcwfb81uYpXTdeCfG2nMfF.png","created_at": "2025-02-13T21:44:30.000000Z","updated_at": "2025-02-13T21:44:30.000000Z","car_models": []}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -169,11 +171,12 @@ return [
         'abs;boolean;required;New presence of ABS brakes in the car model',
         '_method;string;required;put'
       ],
-      'request' => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false}',
+      'request' => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false, "_method": "put"}',
       'response' => '{"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -192,11 +195,12 @@ return [
         'abs;boolean;optional;New presence of ABS brakes in the car model',
         '_method;string;required;patch'
       ],
-      'request' => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false}',
+      'request' => '{"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false, "_method": "patch"}',
       'response' => '{"id": 6,"brand_id": 6,"name": "Gol 1.0","image": "images/car_model/PFPATBwWx80Ld3FNJRVWWneAarBujVL717TImgv8.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": false,"created_at": "2025-02-13T23:04:30.000000Z","updated_at": "2025-02-13T23:04:30.000000Z","brand": {"id": 6,"name": "volkswagen","image": "images/brand/a8E3JYT3HpgGRFsaLo95ThCbyODdz7HXpFUftvLo.png","created_at": "2025-02-13T21:50:30.000000Z","updated_at": "2025-02-13T21:50:30.000000Z"}}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -241,8 +245,8 @@ return [
       'parameters' => [
         'car_model_id;integer;required;ID of the car model of the car',
         'plate;string;required;Car plate',
-        'available;boolean;optional;Car availability',
-        'km;integer;optional;Car mileage'
+        'available;boolean;required;Car availability',
+        'km;integer;required;Car mileage'
       ],
       'request' => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000}',
       'response' => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}',
@@ -273,17 +277,18 @@ return [
       'description' => 'Updates a specific car',
       'parameters' => [
         'id;integer;required;Car ID',
-        'car_model_id;integer;optional;New car model of the car',
+        'car_model_id;integer;required;New car model of the car',
         'plate;string;required;New car plate',
         'available;boolean;required;New car availability',
         'km;integer;required;New car mileage',
         '_method;string;required;put'
       ],
-      'request' => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000}',
+      'request' => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000, "_method": "put"}',
       'response' => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -299,11 +304,12 @@ return [
         'km;integer;optional;New car mileage',
         '_method;string;required;patch'
       ],
-      'request' => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000}',
+      'request' => '{"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000, "_method": "patch"}',
       'response' => '{"id": 1,"car_model_id": 1,"plate": "AAA-3333","available": true,"km": 1000,"created_at": "2025-02-13T22:44:17.000000Z","updated_at": "2025-02-13T22:44:17.000000Z","car_model": {"id": 1,"brand_id": 6,"name": "Polo","image": "images/car_model/mUB9KhXnmTW9Api3QnWDGxz6CgInqKb3XJlhFdUX.png","doors_number": 5,"seats": 5,"air_bag": true,"abs": true,"created_at": "2025-02-13T21:56:52.000000Z","updated_at": "2025-02-13T22:00:57.000000Z"}}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -381,11 +387,12 @@ return [
         'email;string;required;New customer email',
         '_method;string;required;put'
       ],
-      'request'     => '{"name": "Antonio", "email": "antonio@test.com"}',
+      'request'     => '{"name": "Antonio", "email": "antonio@test.com", "_method": "put"}',
       'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-09T07:01:20.000000Z","id": 3}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -399,11 +406,12 @@ return [
         'email;string;optional;New customer email',
         '_method;string;required;patch'
       ],
-      'request'     => '{"name": "Antonio", "email": "antonio@test.com"}',
+      'request'     => '{"name": "Antonio", "email": "antonio@test.com", "_method": "patch"}',
       'response'    => '{"name": "Antonio","email": "antonio@test.com","updated_at": "2025-03-07T18:08:42.000000Z","created_at": "2025-03-09T07:01:20.000000Z","id": 3}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -494,11 +502,12 @@ return [
         'final_km;integer;required;New final mileage of the rental',
         '_method;string;required;put'
       ],
-      'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
+      'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111, "_method": "put"}',
       'response'    => '{"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [
@@ -518,11 +527,12 @@ return [
         'final_km;integer;optional;New final mileage of the rental',
         '_method;string;required;patch'
       ],
-      'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111}',
+      'request'     => '{"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111, "_method": "patch"}',
       'response'    => '{"id": 1,"customer_id": 3,"car_id": 1,"start_date_period": "2024-09-15 00:00:00","final_date_expected_period": "2024-09-17 00:00:00","end_date_realized_period": "2024-09-17 00:00:00","daily_value": 10,"initial_km": 1001,"final_km": 1111,"created_at": "2025-03-07T18:49:24.000000Z","updated_at": "2025-03-07T18:49:24.000000Z"}',
       'response_code' => [
         '200' => 'Success',
-        '404' => 'Not Found'
+        '404' => 'Not Found',
+        '405' => 'Method Not Allowed'
       ]
     ],
     [

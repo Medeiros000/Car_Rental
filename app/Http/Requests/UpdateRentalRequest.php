@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRentalRequest extends FormRequest
@@ -22,8 +23,10 @@ class UpdateRentalRequest extends FormRequest
   public function rules(): array
   {
     if ($this->isMethod('put')) {
+      Log::info('UpdateRentalRequest@rules put');
       return $this->putRules();
     } elseif ($this->isMethod('patch')) {
+      Log::info('UpdateRentalRequest@rules patch');
       return $this->patchRules();
     }
     return [];

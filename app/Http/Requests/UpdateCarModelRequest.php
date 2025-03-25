@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Container\Attributes\Log;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCarModelRequest extends FormRequest
@@ -22,8 +23,10 @@ class UpdateCarModelRequest extends FormRequest
   public function rules(): array
   {
     if ($this->isMethod('put')) {
+      Log::info('UpdateCarModelRequest@rules put');
       return $this->putRules();
     } elseif ($this->isMethod('patch')) {
+      Log::info('UpdateCarModelRequest@rules patch');
       return $this->patchRules();
     }
     return [];

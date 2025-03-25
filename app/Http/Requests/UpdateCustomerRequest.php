@@ -21,9 +21,37 @@ class UpdateCustomerRequest extends FormRequest
    */
   public function rules(): array
   {
+    if ($this->isMethod('put')) {
+      return $this->putRules();
+    } elseif ($this->isMethod('patch')) {
+      return $this->patchRules();
+    }
+    return [];
+  }
+
+  /**
+   * Get the validation rules for PUT requests.
+   *
+   * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+   */
+  protected function putRules(): array
+  {
     return [
-      'name' => 'sometimes|string',
-      'email' => 'sometimes|email',
+      'name' => ['required', 'string', 'min:3'],
+      'email' => ['required', 'email', 'unique:customers,email'],
+    ];
+  }
+
+  /**
+   * Get the validation rules for PATCH requests.
+   *
+   * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+   */
+  protected function patchRules(): array
+  {
+    return [
+      'name' => ['sometimes', 'string', 'min:3'],
+      'email' => ['sometimes', 'email', 'unique:customers,email'],
     ];
   }
 

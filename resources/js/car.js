@@ -24,7 +24,10 @@ function scrollOffset(id) {
   if (window.innerWidth < 630) {
     document.getElementById("sidebar-toggle").click();
   }
-  if (document.querySelector("#details-" + id).classList.contains("hidden")) {
+  if (
+    document.querySelector("#details-" + id) != null &&
+    document.querySelector("#details-" + id).classList.contains("hidden")
+  ) {
     toggleDetails(id);
   }
 }
@@ -65,6 +68,25 @@ function toggleDetails(id) {
     details.classList.remove("hidden");
   } else {
     details.classList.add("hidden");
+  }
+}
+
+function toggleSectionDD(name) {
+  let section = document.getElementById("section-" + name);
+  let icon = document.getElementById("icon-" + name);
+  // Verifica se a seção está "fechada" baseado na opacidade
+  if (section.classList.contains("opacity-0")) {
+    // Remove o estado fechado e aplica o estado aberto
+    section.classList.remove("opacity-0", "max-h-0");
+    section.classList.add("opacity-100");
+    icon.textContent = "▼";
+  } else {
+    // Retorna ao estado fechado
+    section.classList.remove("opacity-100");
+    section.classList.add("opacity-0");
+    // Ajusta a altura para 0 com transição
+    section.classList.add("max-h-0");
+    icon.textContent = "▶";
   }
 }
 

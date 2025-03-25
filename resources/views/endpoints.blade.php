@@ -6,7 +6,7 @@
 @section('content')
   @php
     $rotas = ['brands', 'car_models', 'cars', 'customers', 'rentals'];
-    $methods = ['list', 'store', 'show', 'update', 'delete'];
+    $methods = [['list', 'GET'], ['store', 'POST'], ['show', 'GET'], ['update', 'PUT'], ['update', 'PATCH'], ['delete', 'DELETE']];
     $route_list_values = include resource_path('data/data_routes.php');
   @endphp
 
